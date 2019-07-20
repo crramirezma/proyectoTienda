@@ -57,6 +57,7 @@ public class PrincipalController extends Controlador {
 
     @FXML
     private void accEmp(ActionEvent event) throws IOException {
+        if()
         Parent root= FXMLLoader.load(getClass().getResource("Empleados.fxml"));
         Singleton singleton=Singleton.getSingleton();
         Stage stage=singleton.getStage();
