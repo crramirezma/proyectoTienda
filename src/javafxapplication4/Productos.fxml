@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication4.ProductosController">
+   <children>
+      <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0">
+               <children>
+                  <HBox prefHeight="118.0" prefWidth="601.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="30.0" />
+                        <VBox prefHeight="100.0" prefWidth="208.0">
+                           <children>
+                              <HBox prefHeight="18.0" prefWidth="208.0" />
+                              <TextField fx:id="txReferencia" text="Referencia" />
+                              <HBox prefHeight="14.0" prefWidth="208.0" />
+                              <TextField fx:id="txProducto" text="Producto" />
+                              <HBox prefHeight="14.0" prefWidth="208.0" />
+                              <HBox prefHeight="14.0" prefWidth="208.0">
+                                 <children>
+                                    <TextField fx:id="txCantidad" prefHeight="25.0" prefWidth="103.0" text="Cantidad" />
+                                    <HBox prefHeight="25.0" prefWidth="16.0" />
+                                    <TextField fx:id="txesVenta" prefHeight="25.0" prefWidth="103.0" text="Venta o compra" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="14.0" prefWidth="208.0" />
+                              <TextField fx:id="txPrecio" text="Precio" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="30.0" />
+                        <VBox prefHeight="111.0" prefWidth="319.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="390.0" text="Productos">
+                                 <font>
+                                    <Font name="Bauhaus 93" size="24.0" />
+                                 </font>
+                              </Label>
+                              <VBox prefHeight="19.0" prefWidth="319.0" />
+                              <HBox prefHeight="62.0" prefWidth="324.0">
+                                 <children>
+                                    <VBox prefHeight="62.0" prefWidth="65.0" />
+                                    <VBox prefHeight="62.0" prefWidth="191.0">
+                                       <children>
+                                          <HBox prefHeight="15.0" prefWidth="149.0">
+                                             <children>
+                                                <Button fx:id="btMod" mnemonicParsing="false" onAction="#accMod" prefHeight="25.0" prefWidth="150.0" text="modificar" />
+                                                <Button fx:id="btProveedores" mnemonicParsing="false" onAction="#accProv" prefHeight="25.0" prefWidth="150.0" text="Proveedores" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="15.0" prefWidth="149.0" />
+                                          <HBox prefHeight="15.0" prefWidth="149.0">
+                                             <children>
+                                                <Button fx:id="btAdd" mnemonicParsing="false" onAction="#accAdd" prefHeight="25.0" prefWidth="150.0" text="Agregar" />
+                                                <Button fx:id="btEliminar" mnemonicParsing="false" onAction="#accEliminar" prefHeight="25.0" prefWidth="150.0" text="Eliminar" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="62.0" prefWidth="67.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="8.0" prefWidth="601.0" />
+                  <TreeTableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="234.0" prefWidth="598.0">
+                     <columns>
+                        <TreeTableColumn prefWidth="120.0" text="Referencia" />
+                        <TreeTableColumn prefWidth="157.0" text="Producto" />
+                        <TreeTableColumn prefWidth="85.0" text="Cantidad" />
+                        <TreeTableColumn minWidth="0.0" prefWidth="141.0" text="Precio" />
+                        <TreeTableColumn minWidth="7.0" prefWidth="98.0" text="Venta o compra" />
+                     </columns>
+                  </TreeTableView>
+                  <Hyperlink fx:id="hlReturn" alignment="TOP_CENTER" onAction="#accReturn" text="Regresar" />
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
