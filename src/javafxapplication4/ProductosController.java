@@ -13,13 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
  *
  * @author daniel
  */
-public class ProductosController implements Initializable {
+public class ProductosController extends Controlador {
 
     @FXML
     private TextField txReferencia;
@@ -56,6 +57,14 @@ public class ProductosController implements Initializable {
 
     @FXML
     private void accProv(ActionEvent event) {
+        if(this.getEmpleado().getCargo().getNombre().equals("Empleado nivel 1")){
+            JOptionPane.showMessageDialog(null,"Esta accion no esta permitida para ti","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            System.out.println("permiso");
+        }
+        
+        
+        
     }
 
     @FXML

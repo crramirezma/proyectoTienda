@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author daniel
  */
-public class EmpleadosController implements Initializable {
+public class EmpleadosController extends Controlador {
 
     @FXML
     private Button btMod;

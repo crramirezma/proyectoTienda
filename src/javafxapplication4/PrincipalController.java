@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -57,13 +58,19 @@ public class PrincipalController extends Controlador {
 
     @FXML
     private void accEmp(ActionEvent event) throws IOException {
-        if()
-        Parent root= FXMLLoader.load(getClass().getResource("Empleados.fxml"));
-        Singleton singleton=Singleton.getSingleton();
-        Stage stage=singleton.getStage();
-        Scene scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        System.out.println("poderrrr");
+        System.out.println(this.getEmpleado().getCargo().getNombre());
+        if(this.getEmpleado().getCargo().getNombre().equals("Administrador")){
+            Parent root= FXMLLoader.load(getClass().getResource("Empleados.fxml"));
+            Singleton singleton=Singleton.getSingleton();
+            Stage stage=singleton.getStage();
+            Scene scene=new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }else{
+            
+            JOptionPane.showMessageDialog(null,"No tienes permiso para esta accion","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @FXML

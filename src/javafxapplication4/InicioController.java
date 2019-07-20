@@ -5,6 +5,8 @@
  */
 package javafxapplication4;
 
+import Code.EmpSingleton;
+import Code.Empleado;
 import Code.Singleton;
 import java.io.IOException;
 import java.net.URL;
@@ -58,10 +60,13 @@ public class InicioController extends Controlador{
         Parent root= FXMLLoader.load(getClass().getResource("Principal.fxml"));
         Singleton singleton=Singleton.getSingleton();
         Stage stage=singleton.getStage();
+        
         int j=0;
         for(int i=0;i<this.getEmpleados().size();i++){
                 if(this.getEmpleados().get(i).getId().equals(this.cont.getText())&&this.getEmpleados().get(i).getNombre().equals(this.usuario.getText())){
-                    setEmpleado(this.getEmpleados().get(i));
+                    
+                    this.setEmpleado(this.getEmpleados().get(i));
+                    System.out.println(this.getEmpleado().getCargo().getNombre());
                     Scene scene=new Scene(root);
                     stage.setScene(scene);
                     stage.show();
