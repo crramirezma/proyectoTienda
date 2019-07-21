@@ -63,6 +63,8 @@ public class PrincipalController extends Controlador {
         System.out.println(this.getEmpleado().getCargo().getNombre());
         if(this.getEmpleado().getCargo().getNombre().equals("Administrador")){
             Parent root= FXMLLoader.load(getClass().getResource("Empleados.fxml"));
+            this.getVenta().clear();
+            this.setCliente(null);
             Singleton singleton=Singleton.getSingleton();
             Stage stage=singleton.getStage();
             Scene scene=new Scene(root);

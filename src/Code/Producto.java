@@ -13,13 +13,12 @@ public class Producto {
     private int precio;
     private String referencia;
     private String nombre;
-    
+    private int cantidadEnStock;
     
     public Producto(int precio, String referencia, String nombre){
         this.precio=precio;
         this.nombre=nombre;
         this.referencia=referencia;
-        
     }
     public int getPrecio() {
         return precio;

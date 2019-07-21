@@ -13,7 +13,7 @@ import java.util.*;
  * @author 57312
  */
 public class Cliente extends Persona {
-    private double calificacion;
+    private double calificacion=0;
     public Cliente(String Nombre,  String telefono){
         
         this.cellphone=telefono;

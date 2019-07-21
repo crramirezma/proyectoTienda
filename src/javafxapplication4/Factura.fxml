@@ -126,7 +126,7 @@
                   </VBox>
                </children>
             </HBox>
-            <TableView prefHeight="218.0" prefWidth="560.0">
+            <TableView fx:id="table" prefHeight="218.0" prefWidth="560.0">
               <columns>
                 <TableColumn fx:id="tableDescrip" prefWidth="229.0" text="Descripcion" />
                 <TableColumn fx:id="tableCant" minWidth="0.0" prefWidth="42.0" text="Cant." />
