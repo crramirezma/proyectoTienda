@@ -119,6 +119,7 @@ public class FacturaController extends Controlador {
 
     @FXML
     private void accRegresar(ActionEvent event) throws IOException {
+        
         Parent root= FXMLLoader.load(getClass().getResource("Principal.fxml"));
         Singleton singleton=Singleton.getSingleton();
         Stage stage=singleton.getStage();

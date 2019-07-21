@@ -11,31 +11,16 @@ import java.util.*;
  */
 public class Empleado extends Persona{
     private Cargo cargo;
-   
-
     public Cargo getCargo() {
         return cargo;
     }
-
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
-
-    
-
-    
     public Empleado(String name, String id,String cellphone,Cargo cargo){
         this.nombre=name;
-        this.id=id;
-        
+        this.id=id;    
         this.cargo=cargo;
-        this.cellphone=cellphone;
-        
-    }
-    
-    
-
-    
-    
-    
+        this.cellphone=cellphone;      
+    }    
 }

@@ -40,6 +40,8 @@ import javax.swing.JOptionPane;
  *
  * @author daniel
  */
+
+//no olvidar siempre que creen una nueva vista quiten el "implements Initializable" y cambienlo por "extends Controlador"
 public class VistaController extends Controlador {
     public Cliente cliente;
     private ArrayList<Venta>ventas=new ArrayList<>();
@@ -79,71 +81,7 @@ public class VistaController extends Controlador {
     @FXML
     private Label lbEmpleado;
     
-    
-    /**
-     * Listener de la tabla 
-     
-    
-        private final ListChangeListener<Venta> selectorTablaPersonas =
-            new ListChangeListener<Venta>() {
-                @Override
-                public void onChanged(ListChangeListener.Change<? extends Venta> c) {
-                    ponerVentaSeleccionada();
-                }
-            };*/
 
-    /**
-     * PARA SELECCIONAR UNA CELDA DE LA TABLA "table"
-     * @return 
-     
-    public Venta getTablaVentasSeleccionada() {
-        if (table != null) {
-            List<Venta>tabla = table.getSelectionModel().getSelectedItems();
-            
-            if (tabla.size() == 1) {
-                final Venta competicionSeleccionada;
-                competicionSeleccionada = tabla.get(0);
-                return competicionSeleccionada;
-            }
-        }
-        return null;
-    }*/
-
-    /**
-     * Método para poner en los textFields la tupla que selccionemos
-     
-    private void ponerVentaSeleccionada() {
-        final Venta ventas = getTablaVentasSeleccionada();
-        cont = obs.indexOf(ventas);
-
-        if (ventas != null) {
-
-            // Pongo los textFields con los datos correspondientes
-            this..setText(persona.getNombre());
-            apellidoTF.setText(persona.getApellido());
-            edadTF.setText(persona.getEdad().toString());
-            telefonoTF.setText(persona.getTelefono());
-
-            // Pongo los botones en su estado correspondiente
-            modificarBT.setDisable(false);
-            eliminarBT.setDisable(false);
-            aniadirBT.setDisable(true);
-
-        }
-    }*/
-
-    /**
-     * Método para inicializar la tabla
-     
-    private void inicializarTablaPersonas() {
-        tbProduct.setCellValueFactory(new PropertyValueFactory<Venta, String>("Producto"));
-        this.tbCantidad.setCellValueFactory(new PropertyValueFactory<Venta, Integer>("Cantidad"));
-        this.tbPrecio.setCellValueFactory(new PropertyValueFactory<Venta, Integer>("precio"));
-        this..setCellValueFactory(new PropertyValueFactory<Persona, String>("telefono"));
-
-        personas = FXCollections.observableArrayList();
-        tablaPersonas.setItems(personas);
-    }*/
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -205,7 +143,7 @@ public class VistaController extends Controlador {
     @FXML
     private void accGenerar(ActionEvent event) throws IOException {
         Parent root= FXMLLoader.load(getClass().getResource("Factura.fxml"));
-        
+        //no se usa el singleton ya que la idea no es cerrar el programa anterior, si no crear una ventana nueva
         Stage stage=new Stage();
         Scene scene=new Scene(root);
         stage.setScene(scene);
@@ -214,6 +152,19 @@ public class VistaController extends Controlador {
 
     @FXML
     private void accTotal(ActionEvent event) {
+        
+        //resultado total con descuento de 0 a 10 no habra descuento, de 10a 20 un 5%, y de 21 en adelante un 10%
+        int sum=0;
+        for(int i=0;i<venta.size();i++){
+            sum+=this.venta.get(i).getPrecio();
+        }
+        if(this.cliente.getCalificacion()<10){
+            this.btTotal.setText(Integer.toString(sum));
+        }else if(this.cliente.getCalificacion()>=10&&this.cliente.getCalificacion()<20){
+            btTotal.setText(Integer.toString((int) (sum-sum*0.05)));
+        }else{
+            btTotal.setText(Integer.toString((int) (sum-sum*0.1)));
+        } 
     }
 
     @FXML

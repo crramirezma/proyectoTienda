@@ -26,6 +26,8 @@ import javax.swing.JOptionPane;
  *
  * @author daniel
  */
+
+//no olvidar siempre que creen una nueva vista quiten el "implements Initializable" y cambienlo por "extends Controlador"
 public class PrincipalController extends Controlador {
 
     @FXML
@@ -59,9 +61,10 @@ public class PrincipalController extends Controlador {
 
     @FXML
     private void accEmp(ActionEvent event) throws IOException {
-        System.out.println("poderrrr");
-        System.out.println(this.getEmpleado().getCargo().getNombre());
+        
         if(this.getEmpleado().getCargo().getNombre().equals("Administrador")){
+            
+            
             Parent root= FXMLLoader.load(getClass().getResource("Empleados.fxml"));
             this.getVenta().clear();
             this.setCliente(null);
@@ -71,7 +74,7 @@ public class PrincipalController extends Controlador {
             stage.setScene(scene);
             stage.show();
         }else{
-            
+            //Los jOptionpane botan mensajes en la pantalla sin dañar el singleton
             JOptionPane.showMessageDialog(null,"No tienes permiso para esta accion","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }

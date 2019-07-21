@@ -32,6 +32,11 @@ import javax.swing.JOptionPane;
  *
  * @author daniel
  */
+
+
+
+
+//no olvidar siempre que creen una nueva vista quiten el "implements Initializable" y cambienlo por "extends Controlador"
 public class InicioController extends Controlador{
 
     @FXML
@@ -61,7 +66,7 @@ public class InicioController extends Controlador{
         Parent root= FXMLLoader.load(getClass().getResource("Principal.fxml"));
         Singleton singleton=Singleton.getSingleton();
         Stage stage=singleton.getStage();
-        
+        //validacion de datos de inicio, solo creara la nueva escena si se cumplen los parametros del if
         int j=0;
         for(int i=0;i<this.getEmpleados().size();i++){
                 if(this.getEmpleados().get(i).getId().equals(this.cont.getText())&&this.getEmpleados().get(i).getNombre().equals(this.usuario.getText())){
