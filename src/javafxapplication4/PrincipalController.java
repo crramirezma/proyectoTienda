@@ -5,9 +5,10 @@
  */
 package javafxapplication4;
 
-import Code.Singleton;
+import Code.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class PrincipalController extends Controlador {
     private Button btInven;
     @FXML
     private Hyperlink btReturn;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -78,7 +79,14 @@ public class PrincipalController extends Controlador {
     }
 
     @FXML
-    private void accInven(ActionEvent event) {
+    private void accInven(ActionEvent event) throws IOException {
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("Productos.fxml"));
+        Singleton singleton=Singleton.getSingleton();
+        Stage stage=singleton.getStage();
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

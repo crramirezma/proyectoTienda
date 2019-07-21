@@ -33,7 +33,7 @@
                                  <children>
                                     <TextField fx:id="txCantidad" prefHeight="25.0" prefWidth="103.0" text="Cantidad" />
                                     <HBox prefHeight="25.0" prefWidth="16.0" />
-                                    <TextField fx:id="txesVenta" prefHeight="25.0" prefWidth="103.0" text="Venta o compra" />
+                                    <Button fx:id="btAddDesc" mnemonicParsing="false" onAction="#accAddDesc" prefHeight="25.0" prefWidth="150.0" text="Agregar descripcion" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="14.0" prefWidth="208.0" />
@@ -83,7 +83,7 @@
                         <TreeTableColumn prefWidth="157.0" text="Producto" />
                         <TreeTableColumn prefWidth="85.0" text="Cantidad" />
                         <TreeTableColumn minWidth="0.0" prefWidth="141.0" text="Precio" />
-                        <TreeTableColumn minWidth="7.0" prefWidth="98.0" text="Venta o compra" />
+                        <TreeTableColumn minWidth="7.0" prefWidth="98.0" text="Descripcion" />
                      </columns>
                   </TreeTableView>
                   <Hyperlink fx:id="hlReturn" alignment="TOP_CENTER" onAction="#accReturn" text="Regresar" />
