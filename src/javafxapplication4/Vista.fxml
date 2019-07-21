@@ -29,7 +29,7 @@
                      </children></HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="187.0" textFill="#0fff00">
+                        <Label fx:id="lbEmpleado" alignment="CENTER" prefHeight="19.0" prefWidth="187.0" textFill="#0fff00">
                            <font>
                               <Font name="Arial" size="16.0" />
                            </font>

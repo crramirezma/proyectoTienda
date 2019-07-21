@@ -50,68 +50,7 @@ public class InicioController extends Controlador{
     /**
      * Initializes the controller class.
      */
-    
-    
-    
-    
-    
-        private final ListChangeListener<Persona> selectorTablaPersonas =
-            new ListChangeListener<Persona>() {
-                @Override
-                public void onChanged(ListChangeListener.Change<? extends Persona> c) {
-                    ponerPersonaSeleccionada();
-                }
-            };
-
-    /**
-     * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
-     */
-    public Persona getTablaPersonasSeleccionada() {
-        if (tablaPersonas != null) {
-            List<Persona> tabla = tablaPersonas.getSelectionModel().getSelectedItems();
-            if (tabla.size() == 1) {
-                final Persona competicionSeleccionada = tabla.get(0);
-                return competicionSeleccionada;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Método para poner en los textFields la tupla que selccionemos
-     */
-    private void ponerPersonaSeleccionada() {
-        final Persona persona = getTablaPersonasSeleccionada();
-        posicionPersonaEnTabla = personas.indexOf(persona);
-
-        if (persona != null) {
-
-            // Pongo los textFields con los datos correspondientes
-            nombreTF.setText(persona.getNombre());
-            apellidoTF.setText(persona.getApellido());
-            edadTF.setText(persona.getEdad().toString());
-            telefonoTF.setText(persona.getTelefono());
-
-            // Pongo los botones en su estado correspondiente
-            modificarBT.setDisable(false);
-            eliminarBT.setDisable(false);
-            aniadirBT.setDisable(true);
-
-        }
-    }
-
-    /**
-     * Método para inicializar la tabla
-     */
-    private void inicializarTablaPersonas() {
-        nombreCL.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
-        apellidoCL.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));
-        edadCL.setCellValueFactory(new PropertyValueFactory<Persona, Integer>("edad"));
-        telefonoCL.setCellValueFactory(new PropertyValueFactory<Persona, String>("telefono"));
-
-        personas = FXCollections.observableArrayList();
-        tablaPersonas.setItems(personas);
-    }
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

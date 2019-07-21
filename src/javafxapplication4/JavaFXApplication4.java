@@ -34,13 +34,25 @@ public class JavaFXApplication4 extends Application {
         clientes=new ArrayList<>();
         empleados=new ArrayList<>();
         productos=new ArrayList<>();
+        //ejemplo con empleados de prueba
         Cargo cargo=new Cargo("Administrador");
         Empleado emp1=new Empleado("daniel","1000832655","3123112027",cargo);
         Empleado emp2=new Empleado("cristian","1000832655","3212055883",new Cargo("Empleado nivel 1"));
         Empleado emp3=new Empleado("felipe","1000832655","48596712",null);
+        //agregandolos a los arraylist 
         empleados.add(emp1);
         empleados.add(emp2);
         empleados.add(emp3);
+        //ejemplo con productos de prueba
+        Producto p1=new Producto(20, "como estan", "mango");
+        Producto p2=new Producto(20, "como estan", "mangoso");
+        //agregandolos a los arraylist 
+        productos.add(p1);
+        productos.add(p2);
+        
+        
+        
+        
         Parent root = FXMLLoader.load(getClass().getResource("Inicio.fxml"));
         Singleton singleton=Singleton.getSingleton();
         singleton.setStage(stage);

@@ -13,19 +13,13 @@ import java.util.Date;
  * @author 57312
  */
 public abstract class Persona {
-    protected String apellido;
+    
     protected String nombre;
     protected String cellphone;
    
     protected String id;
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+    
 
     public String getNombre() {
         return nombre;
