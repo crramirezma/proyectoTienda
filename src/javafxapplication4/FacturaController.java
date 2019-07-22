@@ -107,11 +107,11 @@ public class FacturaController extends Controlador {
             sum+=venta.get(i).getTotal();
             table.getItems().add(venta.get(i));
         }
-        if(this.cliente==null){
-            
-        }else if(this.cliente.getCalificacion()<10){
+        if(FacturaController.cliente==null){
+            this.total.setText(Integer.toString(sum));
+        }else if(FacturaController.cliente.getCalificacion()<10){
             total.setText(Integer.toString(sum));
-        }else if(this.cliente.getCalificacion()>=10&&this.cliente.getCalificacion()<20){
+        }else if(FacturaController.cliente.getCalificacion()>=10&&FacturaController.cliente.getCalificacion()<20){
             total.setText(Integer.toString((int) (sum-sum*0.05)));
         }else{
             total.setText(Integer.toString((int) (sum-sum*0.1)));

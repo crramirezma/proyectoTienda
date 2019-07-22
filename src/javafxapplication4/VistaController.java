@@ -144,13 +144,13 @@ public class VistaController extends Controlador {
             
         }
         
-        
+        setVenta(ventas);
     }
 
     @FXML
     private void accGenerar(ActionEvent event) throws IOException {
         Parent root= FXMLLoader.load(getClass().getResource("Factura.fxml"));
-        setVenta(ventas);
+        
         //no se usa el singleton ya que la idea no es cerrar el programa anterior, si no crear una ventana nueva
         Stage stage=new Stage();
         Scene scene=new Scene(root);
