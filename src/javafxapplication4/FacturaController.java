@@ -87,9 +87,8 @@ public class FacturaController extends Controlador {
         private TableView<Venta> table; dentro de los mayores y menores se especifica la clase
         
         */
-        for (int i = 0; i < 10; i++) {
-            table.getItems().add(venta.get(i));
-        }
+        
+        
         
         //evaluar los datos del cliente y cargarlos a sus respectivos Labels
         if(this.cliente==null){
@@ -103,10 +102,14 @@ public class FacturaController extends Controlador {
         //resultado total con descuento de 0 a 10 no habra descuento, de 10a 20 un 5%, y de 21 en adelante un 10%
         
         int sum=0;
-        for(int i=0;i<venta.size();i++){
-            sum+=getTienda().getVentas().get(i).getPrecio();
+        System.out.println("aqui");
+        for(int i=0;i<FacturaController.venta.size();i++){
+            sum+=venta.get(i).getTotal();
+            table.getItems().add(venta.get(i));
         }
-        if(this.cliente.getCalificacion()<10){
+        if(this.cliente==null){
+            
+        }else if(this.cliente.getCalificacion()<10){
             total.setText(Integer.toString(sum));
         }else if(this.cliente.getCalificacion()>=10&&this.cliente.getCalificacion()<20){
             total.setText(Integer.toString((int) (sum-sum*0.05)));

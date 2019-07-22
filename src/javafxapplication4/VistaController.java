@@ -33,6 +33,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -49,23 +50,11 @@ public class VistaController extends Controlador {
     @FXML
     private TextField txCliente;
     @FXML
-    private Button btEscCliente;
-    @FXML
     private TextField txRef;
     @FXML
     private TextField txCantidad;
-    @FXML
-    private Button btEscoger;
-    @FXML
-    private Button btGenerar;
-    @FXML
-    private Button btTotal;
-    @FXML
-    private Hyperlink hpReturn;
     //private ObservableList<Venta> obs;
     private int cont;
-    @FXML
-    private DatePicker date;
     @FXML
     private TableView<Venta> table;
     @FXML
@@ -82,6 +71,19 @@ public class VistaController extends Controlador {
     private Label lbEmpleado;
     @FXML
     private Label total;
+    @FXML
+    private Button btEscCliente;
+    @FXML
+    private Button btEscoger;
+    @FXML
+    private DatePicker date;
+    @FXML
+    private Button btGenerar;
+    @FXML
+    private Button btTotal;
+    @FXML
+    private Hyperlink hpReturn;
+
     
 
     
@@ -116,7 +118,7 @@ public class VistaController extends Controlador {
     @FXML
     private void accEscoger(ActionEvent event) {
         
-        Venta venta;
+        Venta ventass;
         
         int cantidad=Integer.parseInt(this.txCantidad.getText());
         if(txRef==null||txCantidad==null){
@@ -130,11 +132,12 @@ public class VistaController extends Controlador {
                 Producto producto;
                 producto = tienda.getProductos().get(i);
                 j=1;
-                venta=new Venta(producto,cantidad);
-                ventas.add(new Venta(producto,cantidad));
-                table.getItems().add(venta);
-                //obs.add(venta);
-                i=tienda.getProductos().size();
+                
+                ventass=new Venta(producto,cantidad);
+                ventas.add(ventass);
+                table.getItems().add(ventass);
+                
+                
             }
         }if(j==0){
             JOptionPane.showMessageDialog(null,"Producto no hallado","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -147,7 +150,7 @@ public class VistaController extends Controlador {
     @FXML
     private void accGenerar(ActionEvent event) throws IOException {
         Parent root= FXMLLoader.load(getClass().getResource("Factura.fxml"));
-        setVenta(venta);
+        setVenta(ventas);
         //no se usa el singleton ya que la idea no es cerrar el programa anterior, si no crear una ventana nueva
         Stage stage=new Stage();
         Scene scene=new Scene(root);
@@ -184,5 +187,7 @@ public class VistaController extends Controlador {
         stage.setScene(scene);
         stage.show();
     }
+
+    
     
 }

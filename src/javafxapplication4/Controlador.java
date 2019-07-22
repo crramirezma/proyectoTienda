@@ -27,6 +27,7 @@ public abstract class Controlador implements Initializable {
     }
 
     public static void setVenta(ArrayList<Venta> venta) {
+        
         Controlador.venta = venta;
     }
     
