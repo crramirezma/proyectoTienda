@@ -50,7 +50,14 @@
                                     <Button fx:id="btEliminar" mnemonicParsing="false" onAction="#accEliminar" prefHeight="25.0" prefWidth="150.0" text="Eliminar empleado" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="62.0" prefWidth="109.0" />
+                              <VBox prefHeight="62.0" prefWidth="109.0">
+                                 <children>
+                                    <Button fx:id="btGuardar" mnemonicParsing="false" onAction="#btGuardar" prefHeight="31.0" prefWidth="103.0" text="Guardar">
+                                       <font>
+                                          <Font name="System Bold Italic" size="15.0" fx:id="x11" />
+                                       </font>
+                                    </Button>
+                                 </children></VBox>
                            </children>
                         </HBox>
                      </children>

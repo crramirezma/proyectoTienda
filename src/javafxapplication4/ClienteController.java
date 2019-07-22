@@ -16,13 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 
-/**
- *
- * @author Richard
- */
-public class ClienteController implements Initializable {
-
-    // Declaramos los botones
+/*
+/ Declaramos los botones
     @FXML private Button aniadirBT;
     @FXML private Button modificarBT;
     @FXML private Button eliminarBT;
@@ -66,11 +61,7 @@ public class ClienteController implements Initializable {
     @FXML
     
     ObservableList<Cliente> personas;
-    /**
-     * Método que realiza las acciones tras pulsar el boton "Nuevo"
-     *
-     * @param event
-     */
+    
     @FXML private void nuevo(ActionEvent event) {
         nombreTF.setText("");
         celularTF.setText("");
@@ -81,11 +72,7 @@ public class ClienteController implements Initializable {
         aniadirBT.setDisable(false);
     }
 
-    /**
-     * Método que realiza las acciones tras pulsar el boton "Añadir"
-     *
-     * @param event
-     */
+    
     @FXML private void aniadir(ActionEvent event) {
         String nombre=nombreTF.getText();
         String celular=celularTF.getText();
@@ -96,11 +83,7 @@ public class ClienteController implements Initializable {
         personas.add(persona);
     }
 
-    /**
-     * Método que realiza las acciones tras pulsar el boton "Modificar"
-     *
-     * @param event
-     */
+    
     @FXML private void modificar(ActionEvent event) {
         String nombre=nombreTF.getText();
         String celular=celularTF.getText();
@@ -111,28 +94,19 @@ public class ClienteController implements Initializable {
         personas.set(posicionPersonaEnTabla, cliente);
     }
 
-    /**
-     * Método que realiza las acciones tras pulsar el boton "Eliminar"
-     *
-     * @param event
-     */
+    
     @FXML private void eliminar(ActionEvent event) {
         personas.remove(posicionPersonaEnTabla);
     }
-    /**
-     * Listener de la tabla personas
-     */
-    private final ListChangeListener<Persona> selectorTablaPersonas =
-            new ListChangeListener<Persona>() {
-                @Override
-                public void onChanged(ListChangeListener.Change<? extends Persona> c) {
-                    ponerPersonaSeleccionada();
-                }
-            };
+    
+    private final ListChangeListener<Persona> selectorTablaPersonas =new ListChangeListener<Persona>() {
+                                                                        @Override
+                                                                        public void onChanged(ListChangeListener.Change<? extends Persona> c) {
+                                                                            ponerPersonaSeleccionada();
+                                                                        }
+                                                                    };
 
-    /**
-     * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
-     */
+    
     public Persona getTablaClienteSeleccionada() {
         if (tablaPersonas != null) {
             List<Cliente> tabla = tablaPersonas.getSelectionModel().getSelectedItems();
@@ -144,9 +118,7 @@ public class ClienteController implements Initializable {
         return null;
     }
 
-    /**
-     * Método para poner en los textFields la tupla que selccionemos
-     */
+    
     private void ponerPersonaSeleccionada() {
         final Cliente cliente = (Cliente) getTablaClienteSeleccionada();
         posicionPersonaEnTabla = personas.indexOf(cliente);
@@ -167,9 +139,7 @@ public class ClienteController implements Initializable {
         }
     }
 
-    /**
-     * Método para inicializar la tabla
-     */
+    
     private void inicializarTablaPersonas() {
         nombreCL.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
         apellidoCL.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));
@@ -197,5 +167,71 @@ public class ClienteController implements Initializable {
         // Inicializamos la tabla con algunos datos aleatorios
        
     }
+*/
+/**
+ *
+ * @author Richard
+ */
+public class ClienteController extends Controlador {
+
+    @FXML
+    private TableView<?> tablaPersonas;
+    @FXML
+    private TableColumn<?, ?> nombreCL;
+    @FXML
+    private TableColumn<?, ?> celularCL;
+    @FXML
+    private TableColumn<?, ?> idCL;
+    @FXML
+    private TableColumn<?, ?> calificacionCL;
+    @FXML
+    private Font x1;
+    @FXML
+    private TextField nombreTF;
+    @FXML
+    private TextField celularTF;
+    @FXML
+    private TextField idTF;
+    @FXML
+    private TextField calificacionTF;
+    @FXML
+    private Button aniadirBT;
+    @FXML
+    private Button modificarBT;
+    @FXML
+    private Button eliminarBT;
+    @FXML
+    private Button nuevoBT;
+    @FXML
+    private Button btGuardar;
+    @FXML
+    private Font x11;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("hola");
+    }
+
+    @FXML
+    private void aniadir(ActionEvent event) {
+    }
+
+    @FXML
+    private void modificar(ActionEvent event) {
+    }
+
+    @FXML
+    private void eliminar(ActionEvent event) {
+    }
+
+    @FXML
+    private void nuevo(ActionEvent event) {
+    }
+
+    @FXML
+    private void btGuardar(ActionEvent event) {
+    }
+
+    
 }
 

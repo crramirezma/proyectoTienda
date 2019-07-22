@@ -24,6 +24,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -48,6 +49,10 @@ public class CrearCuentaController extends Controlador {
     private Button btCrear;
     @FXML
     private TextField txTelefono;
+    @FXML
+    private Button btGuardar;
+    @FXML
+    private Font x11;
 
     /**
      * Initializes the controller class.
@@ -111,6 +116,10 @@ public class CrearCuentaController extends Controlador {
             
         }
         
+    }
+
+    @FXML
+    private void btGuardar(ActionEvent event) {
     }
 
     

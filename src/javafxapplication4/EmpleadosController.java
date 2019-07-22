@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +40,10 @@ public class EmpleadosController extends Controlador {
     private TextField txId;
     @FXML
     private TextField txTelefono;
+    @FXML
+    private Button btGuardar;
+    @FXML
+    private Font x11;
 
     /**
      * Initializes the controller class.
@@ -64,6 +69,10 @@ public class EmpleadosController extends Controlador {
         Scene scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void btGuardar(ActionEvent event) {
     }
 
     

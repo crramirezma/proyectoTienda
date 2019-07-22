@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="javafxapplication4.ClienteController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication4.ClienteController">
   <children>
     <SplitPane dividerPositions="0.6616541353383458" focusTraversable="true" prefHeight="500.0" prefWidth="800.0">
       <items>
@@ -27,6 +27,11 @@
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="414.0">
           <children>
+                  <Button fx:id="btGuardar" layoutX="150.0" layoutY="6.0" mnemonicParsing="false" onAction="#btGuardar" prefHeight="31.0" prefWidth="103.0" text="Guardar">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" fx:id="x11" />
+                     </font>
+                  </Button>
             <Label layoutX="14.0" layoutY="21.0" text="Nombre:">
               <font>
                 <Font name="System Bold Italic" size="15.0" fx:id="x1" />

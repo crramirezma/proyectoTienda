@@ -82,7 +82,13 @@ public class PrincipalController extends Controlador {
     }
 
     @FXML
-    private void accClientes(ActionEvent event) {
+    private void accClientes(ActionEvent event) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource("Cliente.fxml"));
+        Singleton singleton=Singleton.getSingleton();
+        Stage stage=singleton.getStage();
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
