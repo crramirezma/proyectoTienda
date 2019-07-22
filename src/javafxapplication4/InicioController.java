@@ -5,7 +5,7 @@
  */
 package javafxapplication4;
 
-import Code.EmpSingleton;
+import Code.*;
 import Code.Empleado;
 import Code.Singleton;
 import java.io.IOException;
@@ -69,18 +69,16 @@ public class InicioController extends Controlador{
         //validacion de datos de inicio, solo creara la nueva escena si se cumplen los parametros del if
         int j=0;
         for(int i=0;i<this.getEmpleados().size();i++){
-                if(this.getEmpleados().get(i).getId().equals(this.cont.getText())&&this.getEmpleados().get(i).getNombre().equals(this.usuario.getText())){
+                if(getEmpleados().get(i).getId()==Integer.parseInt(this.cont.getText())&&getEmpleados().get(i).getNombre().equals(this.usuario.getText())){
                     
                     this.setEmpleado(this.getEmpleados().get(i));
-                    System.out.println(this.getEmpleado().getCargo().getNombre());
+                    j=1;
                     Scene scene=new Scene(root);
                     stage.setScene(scene);
                     stage.show();
-                }else{
-                    j++;
                 }
             }
-            if(j==this.getEmpleados().size()){
+            if(j==0){
                 JOptionPane.showMessageDialog(null,"Contraseña y/o correo incorrecto","ERROR",JOptionPane.ERROR_MESSAGE);
             }
         

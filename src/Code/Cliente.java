@@ -13,12 +13,15 @@ import java.util.*;
  * @author 57312
  */
 public class Cliente extends Persona {
-    private double calificacion=0;
-    public Cliente(String Nombre,  String telefono){
-        
-        this.cellphone=telefono;
-        this.nombre=Nombre;
+    private double calificacion;
+    private int numcompras;
+
+    public Cliente(String nombre, String cellphone, int id) {
+        super(nombre, cellphone, id);
+        this.calificacion=0;
+        this.numcompras=0;
     }
+    
     public double getCalificacion() {
         return calificacion;
     }

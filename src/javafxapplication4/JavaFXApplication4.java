@@ -27,43 +27,50 @@ public class JavaFXApplication4 extends Application {
      */
     public static void main(String[] args) {
         
-        launch(args);
+        Application.launch(args);
     }
+    
     @Override
     public void start(Stage stage) throws Exception {
         clientes=new ArrayList<>();
         empleados=new ArrayList<>();
         productos=new ArrayList<>();
+        Tienda tienda=new Tienda("la tienda de doña juana",20000000);
+        
         //ejemplo con empleados de prueba
-        Cargo cargo=new Cargo("Administrador");
-        Empleado emp1=new Empleado("daniel","1000832655","3123112027",cargo);
-        Empleado emp2=new Empleado("cristian","1000832655","3212055883",new Cargo("Empleado nivel 1"));
-        Empleado emp3=new Empleado("felipe","1000832655","48596712",null);
+        //"Empleado nivel 1", "Empleado nivel 2", "Administrador" son los tipos de empleados
+        Empleado emp1=new Empleado("daniel","3123112027",1000832655,"Administrador");
+        Empleado emp2=new Empleado("cristian","3212055883",1000832655,"Empleado nivel 1");
+        
         //agregandolos a los arraylist 
         empleados.add(emp1);
         empleados.add(emp2);
-        empleados.add(emp3);
+        
         //ejemplo con productos de prueba
-        Producto p1=new Producto(20, "como estan", "mango");
-        Producto p2=new Producto(20, "como estan", "mangoso");
+        Producto p1=new Producto(20,001, "mango");
+        Producto p2=new Producto(20, 002, "mangoso");
         //agregandolos a los arraylist 
         productos.add(p1);
         productos.add(p2);
-        
-        
-        
+        tienda.agregarProductoVenta(20,001,"mango");
+        tienda.agregarProductoVenta(20, 002, "mangoso");
+        tienda.agregarEmpleado("Marcos", "3118814540", 1000832655, "Administrador");
+        tienda.agregarCliente("carlos", "000", 12243648);
         
         Parent root = FXMLLoader.load(getClass().getResource("Inicio.fxml"));
         Singleton singleton=Singleton.getSingleton();
         singleton.setStage(stage);
         Scene scene = new Scene(root);
-        Controlador hola=new InicioController();
-        hola.setClientes(clientes);
-        hola.setEmpleados(empleados);
-        hola.setProductos(productos);
+        
+        //cargar la tienda a los controladores
+        Controlador primero=new InicioController();
+        primero.setTienda(tienda);
+        
         stage.setScene(scene);
         stage.show();
     }
+
+    
 
     
     

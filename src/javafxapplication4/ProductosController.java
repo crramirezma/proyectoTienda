@@ -63,7 +63,7 @@ public class ProductosController extends Controlador {
 
     @FXML
     private void accProv(ActionEvent event) {
-        if(this.getEmpleado().getCargo().getNombre().equals("Empleado nivel 1")){
+        if(this.getEmpleado().getCargo().equals("Empleado nivel 1")){
             JOptionPane.showMessageDialog(null,"Esta accion no esta permitida para ti","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             System.out.println("permiso");

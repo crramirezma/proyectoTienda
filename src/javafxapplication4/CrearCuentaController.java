@@ -5,7 +5,7 @@
  */
 package javafxapplication4;
 
-import Code.Cargo;
+import Code.*;
 import Code.Empleado;
 import Code.Singleton;
 import java.io.IOException;
@@ -76,15 +76,15 @@ public class CrearCuentaController extends Controlador {
     @FXML
     private void accCrear(ActionEvent event) {
         String nombre=this.txNombre.getText();
-        String id=this.txId.getText();
-        Cargo cargo=new Cargo(this.cBox.getSelectionModel().getSelectedItem());
+        int id=Integer.parseInt(this.txId.getText());
+        String cargo=this.cBox.getSelectionModel().getSelectedItem();
         String telefono=this.txTelefono.getText();
-        Empleado empleado=new Empleado(nombre,id,telefono,cargo);
-        for(int i=0;i<this.empleados.size();i++){
-            if(((this.empleados.get(i).getNombre().equals(nombre)&&this.empleados.get(i).getId().equals(id))||this.empleados.get(i).getId().equals(id))){
+        Empleado empleado=new Empleado(nombre,"0000",id,cargo);
+        for(int i=0;i<this.getEmpleados().size();i++){
+            if(((this.getEmpleados().get(i).getNombre().equals(nombre)&&this.getEmpleados().get(i).getId()==id)||this.getEmpleados().get(i).getId()==id)){
                 txId.clear();
                 JOptionPane.showMessageDialog(null,"Contraseña y/o correo repetido","ERROR",JOptionPane.ERROR_MESSAGE);
-                i=this.empleados.size();
+                i=this.getEmpleados().size();
             }
         }
         if(txId.getText().equals("")||txId.getId().equals("")||this.cBox.getSelectionModel().getSelectedItem().equals("")){
@@ -95,18 +95,18 @@ public class CrearCuentaController extends Controlador {
         }else{
             int i;
             int j=0;
-            for(i=0;i<this.empleados.size()&&j==0;i++){
-                if(this.empleados.get(i).getId().equals(txAdmin.getText())){
-                    empleados.add(empleado);
+            for(i=0;i<this.getEmpleados().size()&&j==0;i++){
+                if(this.getEmpleados().get(i).getId()==Integer.parseInt(txAdmin.getText())){
+                    
+                    getTienda().agregarEmpleado(nombre, telefono, id, cargo);
                     JOptionPane.showMessageDialog(null,"usuario agregado","ERROR",JOptionPane.PLAIN_MESSAGE);
                     System.out.println("creado");
-                    j++;
+                    j=1;
                 }
                     
             }
-            if(i==this.empleados.size()){
+            if(j==0){
                 JOptionPane.showMessageDialog(null,"No existe Adinistrador con esa cuenta","ERROR",JOptionPane.ERROR_MESSAGE);
-                i=this.empleados.size();
             }
             
         }

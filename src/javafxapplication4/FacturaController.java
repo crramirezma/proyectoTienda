@@ -71,7 +71,7 @@ public class FacturaController extends Controlador {
 
 */
 
-        this.tableDescrip.setCellValueFactory(new PropertyValueFactory<>("name"));
+        this.tableDescrip.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         this.tableCant.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         this.tablePrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         this.tableTotal.setCellValueFactory((new PropertyValueFactory<>("total")));
@@ -88,7 +88,7 @@ public class FacturaController extends Controlador {
         
         */
         for (int i = 0; i < 10; i++) {
-            table.getItems().add(this.venta.get(i));
+            table.getItems().add(venta.get(i));
         }
         
         //evaluar los datos del cliente y cargarlos a sus respectivos Labels
@@ -97,14 +97,14 @@ public class FacturaController extends Controlador {
             this.Cedula.setText("XXXXXX");
         }else{
             this.nombre.setText(this.cliente.getNombre());
-            this.Cedula.setText(this.cliente.getId());
+            this.Cedula.setText(Integer.toString(this.cliente.getId()));
         }
         
         //resultado total con descuento de 0 a 10 no habra descuento, de 10a 20 un 5%, y de 21 en adelante un 10%
         
         int sum=0;
         for(int i=0;i<venta.size();i++){
-            sum+=this.venta.get(i).getPrecio();
+            sum+=getTienda().getVentas().get(i).getPrecio();
         }
         if(this.cliente.getCalificacion()<10){
             total.setText(Integer.toString(sum));

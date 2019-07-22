@@ -62,11 +62,11 @@ public class PrincipalController extends Controlador {
     @FXML
     private void accEmp(ActionEvent event) throws IOException {
         
-        if(this.getEmpleado().getCargo().getNombre().equals("Administrador")){
+        if(this.getEmpleado().getCargo().equals("Administrador")){
             
             
             Parent root= FXMLLoader.load(getClass().getResource("Empleados.fxml"));
-            this.getVenta().clear();
+            this.tienda.getVentas().clear();
             this.setCliente(null);
             Singleton singleton=Singleton.getSingleton();
             Stage stage=singleton.getStage();

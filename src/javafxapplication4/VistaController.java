@@ -80,13 +80,15 @@ public class VistaController extends Controlador {
     private TableColumn tbPtotal;
     @FXML
     private Label lbEmpleado;
+    @FXML
+    private Label total;
     
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.lbEmpleado.setText(this.empleado.getNombre());
-        this.tbProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
+        this.tbProduct.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         this.tbCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         this.tbReferencia.setCellValueFactory(new PropertyValueFactory<>("referencia"));
         this.tbPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
@@ -99,11 +101,11 @@ public class VistaController extends Controlador {
     private void accEscCliente(ActionEvent event) {
         
         int j=0;
-        for(int i=0;i<clientes.size();i++){
-            if(this.txCliente.getText().equals(clientes.get(i).getId())){
-                cliente=clientes.get(i);
+        for(int i=0;i<getClientes().size();i++){
+            if(this.txCliente.getText().equals(getClientes().get(i).getNombre())){
+                cliente=getClientes().get(i);
                 j=1;
-                i=clientes.size();
+                i=getClientes().size();
             }
         }
         if(j==0){
@@ -117,20 +119,22 @@ public class VistaController extends Controlador {
         Venta venta;
         
         int cantidad=Integer.parseInt(this.txCantidad.getText());
-        
+        if(txRef==null||txCantidad==null){
+            JOptionPane.showMessageDialog(null,"Faltan datos","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
         int j=0;
-        for (int i = 0; i <productos.size(); i++) {
+        for (int i = 0; i <tienda.getProductos().size(); i++) {
             
-            if(this.txRef.getText().equals(productos.get(i).getNombre())){
+            if(Integer.parseInt(this.txRef.getText())==(tienda.getProductos().get(i).getReferencia())||this.txRef.getText().equals(tienda.getProductos().get(i).getNombre())){
                 System.out.println(cantidad);
                 Producto producto;
-                producto = productos.get(i);
+                producto = tienda.getProductos().get(i);
                 j=1;
                 venta=new Venta(producto,cantidad);
                 ventas.add(new Venta(producto,cantidad));
                 table.getItems().add(venta);
                 //obs.add(venta);
-                i=productos.size();
+                i=tienda.getProductos().size();
             }
         }if(j==0){
             JOptionPane.showMessageDialog(null,"Producto no hallado","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -143,6 +147,7 @@ public class VistaController extends Controlador {
     @FXML
     private void accGenerar(ActionEvent event) throws IOException {
         Parent root= FXMLLoader.load(getClass().getResource("Factura.fxml"));
+        setVenta(venta);
         //no se usa el singleton ya que la idea no es cerrar el programa anterior, si no crear una ventana nueva
         Stage stage=new Stage();
         Scene scene=new Scene(root);
@@ -155,15 +160,18 @@ public class VistaController extends Controlador {
         
         //resultado total con descuento de 0 a 10 no habra descuento, de 10a 20 un 5%, y de 21 en adelante un 10%
         int sum=0;
-        for(int i=0;i<venta.size();i++){
-            sum+=this.venta.get(i).getPrecio();
+        for(int i=0;i<ventas.size();i++){
+            sum+=ventas.get(i).getTotal();
+            System.out.println("hola");
         }
-        if(this.cliente.getCalificacion()<10){
-            this.btTotal.setText(Integer.toString(sum));
+        if(cliente==null){
+            this.total.setText(Integer.toString(sum));
+        }else if(this.cliente.getCalificacion()<10){
+            this.total.setText(Integer.toString(sum));
         }else if(this.cliente.getCalificacion()>=10&&this.cliente.getCalificacion()<20){
-            btTotal.setText(Integer.toString((int) (sum-sum*0.05)));
+            total.setText(Integer.toString((int) (sum-sum*0.05)));
         }else{
-            btTotal.setText(Integer.toString((int) (sum-sum*0.1)));
+            total.setText(Integer.toString((int) (sum-sum*0.1)));
         } 
     }
 

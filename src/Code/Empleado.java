@@ -10,17 +10,42 @@ import java.util.*;
  * @author 57312
  */
 public class Empleado extends Persona{
-    private Cargo cargo;
-    public Cargo getCargo() {
+    private String cargo;
+    private double horastrabajadas;
+
+    public Empleado(String nombre, String cellphone, int id,String cargo) {
+        super(nombre, cellphone, id);
+        this.cargo=cargo;
+        this.horastrabajadas=0;
+    }
+
+    public String getCargo() {
         return cargo;
     }
-    public void setCargo(Cargo cargo) {
+
+    public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    public Empleado(String name, String id,String cellphone,Cargo cargo){
-        this.nombre=name;
-        this.id=id;    
-        this.cargo=cargo;
-        this.cellphone=cellphone;      
-    }    
+
+    public double getHorastrabajadas() {
+        return horastrabajadas;
+    }
+
+    public void setHorastrabajadas(double horastrabajadas) {
+        this.horastrabajadas = horastrabajadas;
+    }
+    
+    
+    
+
+    
+   
+
+   
+    
+    
+
+    
+    
+    
 }

@@ -10,29 +10,59 @@ package Code;
  * @author daniel
  */
 public class Producto {
-    private int precio;
-    private String referencia;
-    private String nombre;
-    private int cantidadEnStock;
+    private int precioventa;
+    private int preciocompra;
+    private int referencia;
+    //esta cantidad hace referencia al stock
     
-    public Producto(int precio, String referencia, String nombre){
-        this.precio=precio;
-        this.nombre=nombre;
-        this.referencia=referencia;
+    private int cantidad;
+    private String nombre;
+
+    public Producto(int precio,int precio1, int referencia,int cantidad, String nombre) {
+        this.precioventa = precio;
+        this.preciocompra=precio1;
+        this.referencia = referencia;
+        this.cantidad=cantidad;
+        this.nombre = nombre;
     }
-    public int getPrecio() {
-        return precio;
+    //solo Venta
+    public Producto(int precioVenta,  int referencia, String nombre) {
+        this.precioventa=precioVenta;
+        this.referencia = referencia;
+        this.nombre = nombre;
+    }
+    //solo compra
+    public Producto(int precioCompra,int referencia,int cantidad, String nombre) {
+        this.preciocompra = precioCompra;
+        this.referencia = referencia;
+        this.cantidad=cantidad;
+        this.nombre = nombre;
+    }
+    public void aumentarCantidad(int cantidad){
+        this.cantidad+=cantidad;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public int getPrecioventa() {
+        return precioventa;
     }
 
-    public String getReferencia() {
+    public void setPrecioventa(int precioventa) {
+        this.precioventa = precioventa;
+    }
+
+    public int getPreciocompra() {
+        return preciocompra;
+    }
+
+    public void setPreciocompra(int preciocompra) {
+        this.preciocompra = preciocompra;
+    }
+
+    public int getReferencia() {
         return referencia;
     }
 
-    public void setReferencia(String referencia) {
+    public void setReferencia(int referencia) {
         this.referencia = referencia;
     }
 
@@ -43,5 +73,8 @@ public class Producto {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
+   
     
 }

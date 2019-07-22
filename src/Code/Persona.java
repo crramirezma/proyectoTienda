@@ -12,12 +12,17 @@ import java.util.Date;
  *
  * @author 57312
  */
-public abstract class Persona {
+public  class Persona {
     
     protected String nombre;
-    protected String cellphone;
-   
-    protected String id;
+    protected String cellphone;   
+    protected int id;
+
+    public Persona(String nombre, String cellphone, int id) {
+        this.nombre = nombre;
+        this.cellphone = cellphone;
+        this.id = id;
+    }
 
     
 
@@ -37,13 +42,17 @@ public abstract class Persona {
         this.cellphone = cellphone;
     }
 
-    public String getId() {
+   
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
+
+    
     
     
     

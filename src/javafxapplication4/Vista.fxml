@@ -91,7 +91,10 @@
             <Button fx:id="btGenerar" mnemonicParsing="false" onAction="#accGenerar" prefHeight="25.0" prefWidth="135.0" text="Generar factura" />
             <VBox prefHeight="37.0" prefWidth="228.0" />
             <Button fx:id="btTotal" mnemonicParsing="false" onAction="#accTotal" prefHeight="25.0" prefWidth="112.0" text="Total" />
-            <Label prefHeight="25.0" prefWidth="120.0" />
+            <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="120.0">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font></Label>
          </children>
       </HBox>
       <HBox prefHeight="25.0" prefWidth="601.0" />
