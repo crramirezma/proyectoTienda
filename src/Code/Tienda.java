@@ -17,8 +17,16 @@ public class Tienda {
     private ArrayList <Persona> personas;
     private ArrayList <Producto> productos;
     private ArrayList <Venta> ventas;
+    private ArrayList<Pago> pagos;
 
-    
+    public Tienda(String nombre,double capital) {
+        this.capital=capital;
+        this.nombre=nombre;
+        this.personas=new ArrayList<>();
+        this.productos=new ArrayList<>();
+        this.ventas=new ArrayList<>();
+        this.pagos=new ArrayList<>();
+    }
     //los get y los set para los atributos
     public String getNombre() {
         return nombre;
@@ -60,13 +68,7 @@ public class Tienda {
         this.ventas = ventas;
     }
     
-    public Tienda(String nombre,double capital) {
-        this.capital=capital;
-        this.nombre=nombre;
-        this.personas=new ArrayList<>();
-        this.productos=new ArrayList<>();
-        this.ventas=new ArrayList<>();
-    }
+    
     
     public void agregarProducto(int precioventa,int preciocompra,int referencia,int cantidad,String nombre){
         Producto p=new Producto(precioventa,preciocompra,referencia,cantidad,nombre);
@@ -83,7 +85,6 @@ public class Tienda {
     }
     
     public void agregarProductoProovedor(int idProovedor,int referenciaProducto){
-        
         Proovedor prr=null;
         Producto pd=null;
         for(Persona p: personas){
@@ -96,12 +97,8 @@ public class Tienda {
             if(producto.getReferencia()==referenciaProducto){
                 pd=producto;
             }
-        }
-        
-        prr.agregarProducto(pd);
-       
-        
-        
+        }      
+        prr.agregarProducto(pd);   
     }
     
     public void agregarCliente(String nombre,String cellphone,int id){
@@ -124,13 +121,14 @@ public class Tienda {
         for(Producto p:productos){
             if(p.getReferencia()==referencia){
                 p.aumentarCantidad(-cantidad);
+                p.aumentarVentas(cantidad);
                 this.capital=this.capital+(cantidad*p.getPrecioventa());
                 Venta venta=new Venta(p,c,cantidad);
                 this.ventas.add(venta);                              
             }
         }   
     }
-    public void venderProductoScliente(int id,int referencia,int cantidad){
+    public void venderProductoScliente(int referencia,int cantidad){
         for(Producto p:productos){
             if(p.getReferencia()==referencia){
                 p.aumentarCantidad(-cantidad);
@@ -140,14 +138,33 @@ public class Tienda {
             }
         }   
     }
-    public void venderVarios(int numero){
-        
-        for(int i=0;i<numero;i++){
-            
+    
+    public void agregarHorasTrabajo(int horas,int id){
+        for(Persona persona:personas){
+            if(persona instanceof Empleado&&((Empleado)persona).getId()==id){
+                ((Empleado)persona).aumentarHorasTrabajo(horas);
+            }
         }
-        
-        
-        
     }
+    
+    public void pagarEmpleadoMes(int id){
+        for(Persona e:personas){
+            if(e instanceof Empleado&&e.getId()==id){
+                String tipo="Pagoempleado";
+                double pago=((((Empleado)e).getHorastrabajadas())*6000);
+                this.capital-=(((Empleado)e).getHorastrabajadas())*6000;
+                Pago npago=new Pago(tipo,pago);
+                this.pagos.add(npago);
+            }
+        }
+    }
+    
+    public void comprarProducto(){
+    
+    }
+        
+        
+        
+    
     
 }
