@@ -48,7 +48,14 @@ public class PrincipalController extends Controlador {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        if(tienda.getProductos().size()!=0){
+            for(int i=0;i<tienda.getProductos().size();i++){
+                if(tienda.getProductos().get(i).getCantidad()>5&&tienda.getProductos().get(i).getCantidad()>=0){
+                    
+                JOptionPane.showMessageDialog(null,"Tu producto "+tienda.getProductos().get(i).getNombre()+" se agota","ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }    
 
     @FXML

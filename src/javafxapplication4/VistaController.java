@@ -127,7 +127,7 @@ public class VistaController extends Controlador {
         int j=0;
         for (int i = 0; i <tienda.getProductos().size(); i++) {
             
-            if(Integer.parseInt(this.txRef.getText())==(tienda.getProductos().get(i).getReferencia())||this.txRef.getText().equals(tienda.getProductos().get(i).getNombre())){
+            if(this.txRef.getText().equals(tienda.getProductos().get(i).getNombre())){
                 System.out.println(cantidad);
                 Producto producto;
                 producto = tienda.getProductos().get(i);
@@ -149,6 +149,24 @@ public class VistaController extends Controlador {
 
     @FXML
     private void accGenerar(ActionEvent event) throws IOException {
+        int id;
+        int ref;
+        int cantidad;
+        
+        if(this.cliente==null){
+            for (int i = 0; i <this.getVenta().size(); i++) {
+                cantidad=this.getVenta().get(i).getCantidad();
+                ref=this.getVenta().get(i).getReferencia();
+                tienda.venderProductoScliente(ref, cantidad);
+            }
+        }else{
+            for (int i = 0; i <this.getVenta().size(); i++) {
+                cantidad=this.getVenta().get(i).getCantidad();
+                id=cliente.getId();
+                ref=this.getVenta().get(i).getReferencia();
+                tienda.venderProducto(id, ref, cantidad);
+            }
+        }
         Parent root= FXMLLoader.load(getClass().getResource("Factura.fxml"));
         
         //no se usa el singleton ya que la idea no es cerrar el programa anterior, si no crear una ventana nueva

@@ -18,7 +18,10 @@ public class Empleado extends Persona{
         this.cargo=cargo;
         this.horastrabajadas=0;
     }
-
+    
+    public void aumentarHorasTrabajo(double cantidad){
+        this.horastrabajadas+=cantidad;
+    }
     public String getCargo() {
         return cargo;
     }

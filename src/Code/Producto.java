@@ -13,9 +13,18 @@ public class Producto {
     private int precioventa;
     private int preciocompra;
     private int referencia;
+    private int noventas;
     //esta cantidad hace referencia al stock
     
     private int cantidad;
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
     private String nombre;
 
     public Producto(int precio,int precio1, int referencia,int cantidad, String nombre) {
@@ -24,6 +33,7 @@ public class Producto {
         this.referencia = referencia;
         this.cantidad=cantidad;
         this.nombre = nombre;
+        this.noventas=0;
     }
     //solo Venta
     public Producto(int precioVenta,  int referencia, String nombre) {
@@ -42,6 +52,10 @@ public class Producto {
         this.cantidad+=cantidad;
     }
 
+    public void aumentarVentas(int cantidad){
+        this.noventas=this.noventas+cantidad;
+    }
+    
     public int getPrecioventa() {
         return precioventa;
     }

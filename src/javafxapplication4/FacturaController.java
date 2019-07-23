@@ -92,8 +92,8 @@ public class FacturaController extends Controlador {
         
         //evaluar los datos del cliente y cargarlos a sus respectivos Labels
         if(this.cliente==null){
-            this.nombre.setText("XXXXXX");
-            this.Cedula.setText("XXXXXX");
+            this.nombre.setText("");
+            this.Cedula.setText("");
         }else{
             this.nombre.setText(this.cliente.getNombre());
             this.Cedula.setText(Integer.toString(this.cliente.getId()));
